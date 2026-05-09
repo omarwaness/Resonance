@@ -11,6 +11,10 @@ import { ttsFormOptions } from './text-to-speech-form'
 import { GenerateButton } from './generate-button'
 
 import { COST_PER_UNIT, TEXT_MAX_LENGTH } from '../data/constants'
+import { VoiceSelectorButton } from './voice-selector-button'
+import { HistoryDrawer } from './history-drawer'
+import { SettingsDrawer } from './settings-drawer'
+import { PromptSuggestions } from './prompt-suggestions'
 
 export function TextInputPanel() {
   const form = useTypedAppFormContext(ttsFormOptions)
@@ -42,6 +46,12 @@ export function TextInputPanel() {
       <div className="shrink-0 p-4 lg:p-6">
         {/* Mobile layout */}
         <div className="flex flex-col gap-3 lg:hidden">
+          <div className="flex items-center gap-2">
+            <SettingsDrawer>
+              <VoiceSelectorButton />
+            </SettingsDrawer>
+            <HistoryDrawer />
+          </div>
           <GenerateButton
             className="w-full"
             disabled={isSubmitting}
@@ -79,7 +89,9 @@ export function TextInputPanel() {
             </div>
           </div>
         ) : (
-          <div className="hidden lg:block"></div>
+          <div className="hidden lg:block">
+            <PromptSuggestions onSelect={prompt => form.setFieldValue('text', prompt)} />
+          </div>
         )}
       </div>
     </div>
