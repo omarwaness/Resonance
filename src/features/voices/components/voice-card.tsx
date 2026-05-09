@@ -1,6 +1,8 @@
 import Link from 'next/link'
-import { Mic, MoreHorizontal, Pause, Play } from 'lucide-react'
+import { Mic, MoreHorizontal } from 'lucide-react'
 import { Trash2 } from '@/components/animate-ui/icons/trash-2'
+import { Pause } from '@/components/animate-ui/icons/pause'
+import { Play } from '@/components/animate-ui/icons/play'
 import { toast } from 'sonner'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
@@ -120,9 +122,13 @@ export function VoiceCard({ voice }: VoiceCardProps) {
           {isLoading ? (
             <Spinner className="size-4" />
           ) : isPlaying ? (
-            <Pause className="size-4" />
+            <AnimateIcon animateOnHover>
+              <Pause className="size-4" />
+            </AnimateIcon>
           ) : (
-            <Play className="size-4" />
+            <AnimateIcon animateOnHover>
+              <Play className="size-4" />
+            </AnimateIcon>
           )}
         </Button>
         <DropdownMenu>
