@@ -1,10 +1,12 @@
 'use client'
 
 import { useUser } from '@clerk/nextjs'
-import { Headphones, ThumbsUp } from 'lucide-react'
+import { Headphones } from 'lucide-react'
+import { ThumbsUp } from '@/components/animate-ui/icons/thumbs-up'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { AnimateIcon } from '@/components/animate-ui/icons/icon'
 
 export function DashboardHeader() {
   const { isLoaded, user } = useUser()
@@ -21,8 +23,10 @@ export function DashboardHeader() {
       <div className="lg:flex items-center gap-3 hidden">
         <Button variant="outline" size="sm" asChild>
           <Link href="mailto:business@codewithantonio.com">
-            <ThumbsUp />
-            <span className="hidden lg:block">Feedback</span>
+            <AnimateIcon animateOnHover className="flex items-center gap-1">
+              <ThumbsUp />
+              <span className="hidden lg:block">Feedback</span>
+            </AnimateIcon>
           </Link>
         </Button>
         <Button variant="outline" size="sm" asChild>

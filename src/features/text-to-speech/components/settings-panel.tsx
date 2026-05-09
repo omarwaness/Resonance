@@ -1,8 +1,10 @@
-import { History, Settings } from 'lucide-react'
+import { History } from 'lucide-react'
+import { Settings } from '@/components/animate-ui/icons/settings'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { SettingsPanelSettings } from './settings-panel-settings'
 import { SettingsPanelHistory } from './settings-panel-history'
+import { AnimateIcon } from '@/components/animate-ui/icons/icon'
 
 const tabTriggerClassName =
   'flex-1 h-full gap-2 bg-transparent rounded-none border-x-0 border-t-0 border-b-px border-b-transparent shadow-none data-[state=active]:border-b-foreground group-data-[variant=default]/tabs-list:data-[state=active]:shadow-none'
@@ -16,8 +18,13 @@ export function SettingsPanel() {
       >
         <TabsList className="w-full bg-transparent rounded-none border-b h-12 group-data-[orientation=horizontal]/tabs:h-12 p-0">
           <TabsTrigger value="settings" className={tabTriggerClassName}>
-            <Settings className="size-4" />
-            Settings
+            <AnimateIcon
+              animateOnHover
+              className="inline-flex items-center gap-2"
+            >
+              <Settings className="size-4" />
+              Settings
+            </AnimateIcon>
           </TabsTrigger>
           <TabsTrigger value="history" className={tabTriggerClassName}>
             <History className="size-4" />
