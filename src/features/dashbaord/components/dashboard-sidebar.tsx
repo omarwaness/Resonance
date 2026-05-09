@@ -29,6 +29,8 @@ import {
   Headphones
 } from 'lucide-react'
 import Link from 'next/link'
+import { UsageContainer } from '@/features/billing/components/usage-container'
+import { VoiceCreateDialog } from '@/features/voices/components/voice-create-dialog'
 import { useState } from 'react'
 
 interface MenuItem {
@@ -131,6 +133,11 @@ export function DashboardSidebar() {
   ]
 
   return (
+    <>
+      <VoiceCreateDialog
+        open={voiceDialogOpen}
+        onOpenChange={setVoiceDialogOpen}
+      />
       <Sidebar collapsible="icon">
         <SidebarHeader className="flex flex-col gap-4 pt-4">
           <div className="flex items-center gap-2 pl-1 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:pl-0">
@@ -183,6 +190,7 @@ export function DashboardSidebar() {
         </SidebarContent>
         <div className="border-b border-dashed border-border" />
         <SidebarFooter className="gap-3 py-3">
+          <UsageContainer />
           <SidebarMenu>
             <SidebarMenuItem>
               <UserButton
@@ -208,5 +216,6 @@ export function DashboardSidebar() {
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
+    </>
   )
 }
